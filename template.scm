@@ -25,4 +25,4 @@
 
 ; __END__
 ; vim: expandtab softtabstop=2 shiftwidth=2
-; vim: foldmethod=marker
+; vim: filetype=gauche foldmethod=marker
