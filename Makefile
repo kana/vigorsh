@@ -37,7 +37,7 @@ all:
 ALL_TESTS = tests/trie.ok
 define test_dependency
 tests/$(1).ok: tests/$(1).expected tests/$(1).result
-tests/$(1).result: tests/$(1).scm
+tests/$(1).result: tests/$(1).scm vigorsh/$(1).scm
 endef
 $(foreach i, \
           $(patsubst tests/%.ok,%,$(ALL_TESTS)), \
