@@ -34,7 +34,17 @@ all:
 
 # Tests  #{{{1
 
-test: tests/trie.ok
+ALL_TESTS = tests/trie.ok
+define test_dependency
+tests/$(1).ok: tests/$(1).expected tests/$(1).result
+tests/$(1).result: tests/$(1).scm
+endef
+$(foreach i, \
+          $(patsubst tests/%.ok,%,$(ALL_TESTS)), \
+	  $(eval $(call test_dependency,$(i))))
+
+test: $(ALL_TESTS)
+
 %.ok: %.expected %.result
 	if ! cmp $^; then \
 	  cat $*.result; \
@@ -44,9 +54,6 @@ test: tests/trie.ok
 	touch $@
 %.result: %.scm
 	gosh $< >$@
-
-tests/trie.ok: tests/trie.expected tests/trie.result
-tests/trie.result: tests/trie.scm
 
 
 
