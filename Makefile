@@ -36,10 +36,14 @@ all:
 
 test: tests/trie.ok
 %.ok: %.expected %.result
-	cmp $^
+	if ! cmp $^; then \
+	  cat $*.result; \
+	  rm $*.result; \
+	  false; \
+	fi
 	touch $@
 %.result: %.scm
-	gosh $< | tee $@
+	gosh $< >$@
 
 tests/trie.ok: tests/trie.expected tests/trie.result
 tests/trie.result: tests/trie.scm
