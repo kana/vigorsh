@@ -46,11 +46,7 @@ $(foreach i, \
 test: $(ALL_TESTS)
 
 %.ok: %.expected %.result
-	if ! cmp $^; then \
-	  cat $*.result; \
-	  rm $*.result; \
-	  false; \
-	fi
+	diff $^
 	touch $@
 %.result: %.scm
 	gosh $< >$@
