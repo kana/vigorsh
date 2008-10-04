@@ -24,8 +24,8 @@
 (use gauche.test)
 
 (test-start "vigorsh.trie")
-(load "vigorsh.trie")
-(import vigorsh.trie)
+(add-load-path ".")
+(use vigorsh.trie)
 (test-module 'vigorsh.trie)
 
 

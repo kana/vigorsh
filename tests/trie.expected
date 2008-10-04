@@ -1,0 +1,7 @@
+Testing vigorsh.trie ==========================================================
+testing bindings in #<module vigorsh.trie> ... ERROR: symbols exported but not defined: (trie-exists?) AND found dangling autoloads: (trie-exists?)
+<(make-trie)>------------------------------------------------------------------
+test class-of, expects #<class <trie>> ==> ok
+failed.
+discrepancies found.  Errors are:
+test bindings in module vigorsh.trie: expects () => got "symbols exported but not defined: (trie-exists?) AND found dangling autoloads: (trie-exists?)"
