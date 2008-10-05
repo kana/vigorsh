@@ -44,17 +44,21 @@
 (define (%make-hash-table)
   (make-hash-table 'eqv?))
 
+
+
+
 (define-class <trie> ()
-  (
-   (key :init-keyword :key :init-value %unbound)
+  ((key :init-keyword :key :init-value %unbound)
    (value :init-keyword :value :init-value %unbound)
-   (table :init-form (%make-hash-table))
-   ))
+   (table :init-form (%make-hash-table))))
 
 (define (make-trie)
   (make <trie>
         :key %root
         :value %root))
+
+
+
 
 (define (trie-get1 trie key)
   ; Return the subtrie of {trie} corresponding to {key}.
@@ -77,6 +81,9 @@
       (slot-ref subtrie 'value)
       #f)))
 
+
+
+
 (define (trie-put! trie keyseq value)
   (define subtrie trie)
   (for-each
@@ -88,6 +95,7 @@
         (set! subtrie %subtrie)))
     keyseq)
   (slot-set! subtrie 'value value))
+
 
 
 
