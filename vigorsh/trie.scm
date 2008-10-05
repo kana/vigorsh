@@ -22,6 +22,7 @@
 ; }}}
 
 (define-module vigorsh.trie
+  (use gauche.collection)
   (export
     <trie>
     make-trie
@@ -82,7 +83,7 @@
     (lambda (key)
       (let ((%subtrie (trie-get1 subtrie key)))
         (unless %subtrie
-          (hash-table-put! (slot-ref trie 'table) key (make <trie> :key key))
+          (hash-table-put! (slot-ref subtrie 'table) key (make <trie> :key key))
           (set! %subtrie (trie-get1 subtrie key)))
         (set! subtrie %subtrie)))
     keyseq)

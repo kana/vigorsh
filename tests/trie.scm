@@ -39,8 +39,8 @@
 
 (test-section "(trie-get1)")
 
-(define subtrie-f (trie-get1 trie #\f))
 (trie-put! trie "foo" 'foo)
+(define subtrie-f (trie-get1 trie #\f))
 (test* "(trie-get1 trie #\\f)" <trie>
        (class-of subtrie-f))
 (test* "... #\\o" <trie>
@@ -94,7 +94,7 @@
 (test* "(trie-get trie \"foo\")" 'foo (trie-get trie "foo"))
 (test* "(trie-get trie \"foobar\")" 'foobar (trie-get trie "foobar"))
 (test* "(trie-get trie \"foobarbaz\")" 'foobarbaz (trie-get trie "foobarbaz"))
-(trie-delete-under! trie "foobarbaz")
+(trie-delete-under! trie "foobar")
 (test* "(trie-get trie \"foo\")" 'foo (trie-get trie "foo"))
 (test* "(trie-get trie \"foobar\")" 'foobar (trie-get trie "foobar"))
 (test* "(trie-get trie \"foobarbaz\")" #f (trie-get trie "foobarbaz"))
@@ -103,7 +103,7 @@
 (test* "(trie-get trie \"foobar\")" #f (trie-get trie "foobar"))
 (test* "(trie-get trie \"foobarbaz\")" #f (trie-get trie "foobarbaz"))
 
-(test-section "(trie-delete-under!)")
+(test-section "(trie-clear!)")
 (trie-clear! trie)
 (test* "(trie-get trie \"ba\")" #f (trie-get trie "ba"))
 (test* "(trie-get trie \"bar\")" #f (trie-get trie "bar"))

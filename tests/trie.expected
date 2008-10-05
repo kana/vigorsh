@@ -1,7 +1,51 @@
 Testing vigorsh.trie ==========================================================
 testing bindings in #<module vigorsh.trie> ... ERROR: symbols exported but not defined: (trie-exists?) AND found dangling autoloads: (trie-exists?)
 <(make-trie)>------------------------------------------------------------------
-test class-of, expects #<class <trie>> ==> ok
+test class, expects #<class <trie>> ==> ok
+test table, expects #<class <hash-table>> ==> ok
+<(trie-get1)>------------------------------------------------------------------
+test (trie-get1 trie #\f), expects #<class <trie>> ==> ok
+test ... #\o, expects #<class <trie>> ==> ok
+test ... #\o, expects #<class <trie>> ==> ok
+test ... #\X, expects #f ==> ok
+test (trie-get1 trie #\b), expects #<class <trie>> ==> ok
+test ... #\a, expects #<class <trie>> ==> ok
+test ... #\r, expects #<class <trie>> ==> ok
+test ... #\z, expects #<class <trie>> ==> ok
+test (trie-get1 trie #\z), expects #f ==> ok
+<(trie-get)>-------------------------------------------------------------------
+test (trie-get trie "foo"), expects foo ==> ok
+test (trie-get trie "bar"), expects bar ==> ok
+test (trie-get trie "baz"), expects baz ==> ok
+test (trie-get trie "z"), expects #f ==> ok
+test (trie-get trie "foox"), expects #f ==> ok
+<(trie-delete-at!)>------------------------------------------------------------
+test (trie-get trie "ba"), expects XXX ==> ok
+test (trie-get trie "bar"), expects bar ==> ok
+test (trie-get trie "baz"), expects baz ==> ok
+test (trie-get trie "ba"), expects #f ==> ok
+test (trie-get trie "bar"), expects bar ==> ok
+test (trie-get trie "baz"), expects baz ==> ok
+test (trie-get trie "ba"), expects #f ==> ok
+test (trie-get trie "bar"), expects bar ==> ok
+test (trie-get trie "baz"), expects #f ==> ok
+<(trie-delete-under!)>---------------------------------------------------------
+test (trie-get trie "foo"), expects foo ==> ok
+test (trie-get trie "foobar"), expects foobar ==> ok
+test (trie-get trie "foobarbaz"), expects foobarbaz ==> ok
+test (trie-get trie "foo"), expects foo ==> ok
+test (trie-get trie "foobar"), expects foobar ==> ok
+test (trie-get trie "foobarbaz"), expects #f ==> ok
+test (trie-get trie "foo"), expects foo ==> ok
+test (trie-get trie "foobar"), expects #f ==> ok
+test (trie-get trie "foobarbaz"), expects #f ==> ok
+<(trie-clear!)>----------------------------------------------------------------
+test (trie-get trie "ba"), expects #f ==> ok
+test (trie-get trie "bar"), expects #f ==> ok
+test (trie-get trie "baz"), expects #f ==> ok
+test (trie-get trie "foo"), expects #f ==> ok
+test (trie-get trie "foobar"), expects #f ==> ok
+test (trie-get trie "foobarbaz"), expects #f ==> ok
 failed.
 discrepancies found.  Errors are:
 test bindings in module vigorsh.trie: expects () => got "symbols exported but not defined: (trie-exists?) AND found dangling autoloads: (trie-exists?)"
