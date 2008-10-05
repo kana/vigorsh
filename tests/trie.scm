@@ -73,6 +73,13 @@
 (test* "(trie-get trie \"z\")" #f (trie-get trie "z"))
 (test* "(trie-get trie \"foox\")" #f (trie-get trie "foox"))
 
+(test-section "(trie-exists?)")
+(test* "(trie-exists? trie \"foo\")" #t (trie-exists? trie "foo"))
+(test* "(trie-exists? trie \"bar\")" #t (trie-exists? trie "bar"))
+(test* "(trie-exists? trie \"baz\")" #t (trie-exists? trie "baz"))
+(test* "(trie-exists? trie \"z\")" #f (trie-exists? trie "z"))
+(test* "(trie-exists? trie \"foox\")" #f (trie-exists? trie "foox"))
+
 
 (test-section "(trie-delete-at!)")
 (trie-put! trie "ba" 'XXX)

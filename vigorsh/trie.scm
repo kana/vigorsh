@@ -81,6 +81,9 @@
       (slot-ref subtrie 'value)
       #f)))
 
+(define (trie-exists? trie keyseq)
+  (not (eq? %unbound (trie-get trie keyseq))))
+
 
 
 

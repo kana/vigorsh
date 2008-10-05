@@ -1,5 +1,5 @@
 Testing vigorsh.trie ==========================================================
-testing bindings in #<module vigorsh.trie> ... ERROR: symbols exported but not defined: (trie-exists?) AND found dangling autoloads: (trie-exists?)
+testing bindings in #<module vigorsh.trie> ... ok
 <(make-trie)>------------------------------------------------------------------
 test class, expects #<class <trie>> ==> ok
 test table, expects #<class <hash-table>> ==> ok
@@ -19,6 +19,12 @@ test (trie-get trie "bar"), expects bar ==> ok
 test (trie-get trie "baz"), expects baz ==> ok
 test (trie-get trie "z"), expects #f ==> ok
 test (trie-get trie "foox"), expects #f ==> ok
+<(trie-exists?)>---------------------------------------------------------------
+test (trie-exists? trie "foo"), expects #t ==> ok
+test (trie-exists? trie "bar"), expects #t ==> ok
+test (trie-exists? trie "baz"), expects #t ==> ok
+test (trie-exists? trie "z"), expects #f ==> ok
+test (trie-exists? trie "foox"), expects #f ==> ok
 <(trie-delete-at!)>------------------------------------------------------------
 test (trie-get trie "ba"), expects XXX ==> ok
 test (trie-get trie "bar"), expects bar ==> ok
@@ -46,6 +52,4 @@ test (trie-get trie "baz"), expects #f ==> ok
 test (trie-get trie "foo"), expects #f ==> ok
 test (trie-get trie "foobar"), expects #f ==> ok
 test (trie-get trie "foobarbaz"), expects #f ==> ok
-failed.
-discrepancies found.  Errors are:
-test bindings in module vigorsh.trie: expects () => got "symbols exported but not defined: (trie-exists?) AND found dangling autoloads: (trie-exists?)"
+passed.
